@@ -1,17 +1,32 @@
-import { HeroCarousel } from './components/HeroCarousel';
-import { InfoSection } from './components/InfoSection';
-import { LocationSection } from './components/LocationSection';
-import { FAQSection } from './components/FAQSection';
+import { MotionConfig } from 'motion/react';
+import { useEffect } from 'react';
+import { Committee } from './components/Committee';
+import { EventInfo } from './components/EventInfo';
+import { FAQ } from './components/FAQ';
 import { Footer } from './components/Footer';
+import { Gallery } from './components/Gallery';
+import { Hero } from './components/Hero';
+import { Manifesto } from './components/Manifesto';
+import { Nav } from './components/Nav';
+import { VenueMap } from './components/VenueMap';
+import { startSmoothScroll } from './lib/smooth-scroll';
 
 export default function App() {
+  useEffect(() => startSmoothScroll(), []);
+
   return (
-    <div className="min-h-screen bg-white">
-      <HeroCarousel />
-      <InfoSection />
-      <LocationSection />
-      <FAQSection />
+    <MotionConfig reducedMotion="user">
+      <Nav />
+      <main>
+        <Hero />
+        <Manifesto />
+        <EventInfo />
+        <VenueMap />
+        <Gallery />
+        <Committee />
+        <FAQ />
+      </main>
       <Footer />
-    </div>
+    </MotionConfig>
   );
 }

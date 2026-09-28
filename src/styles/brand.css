@@ -1,0 +1,186 @@
+/* Paleta oficial da comissão */
+@theme {
+  --color-wine: #510806;      /* Vermelho — fundo */
+  --color-wine-deep: #2c0302;
+  --color-crimson: #740909;   /* Vermelho — fonte */
+  --color-ivory: #f1e1d6;     /* Off-white — fonte */
+  --color-stone: #d5cec6;     /* Off-white — fundo */
+  --color-gold: #c9a15a;      /* Dourado chapado (bordas finas, ícones) */
+
+  --ease-gallery: cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+html {
+  background: var(--color-wine-deep);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
+}
+
+::selection {
+  background: var(--color-crimson);
+  color: var(--color-ivory);
+}
+
+/* Lenis (scroll suave) */
+html.lenis,
+html.lenis body {
+  height: auto;
+}
+.lenis.lenis-smooth {
+  scroll-behavior: auto !important;
+}
+.lenis.lenis-stopped {
+  overflow: hidden;
+}
+
+@layer components {
+  /* ---------- Texturas ---------- */
+
+  /* Veludo vermelho: gradientes + grão */
+  .bg-velvet {
+    position: relative;
+    isolation: isolate;
+    background-color: var(--color-wine);
+    background-image:
+      radial-gradient(ellipse 80% 60% at 25% 15%, rgb(150 22 16 / 0.55), transparent 65%),
+      radial-gradient(ellipse 70% 60% at 85% 80%, rgb(120 14 10 / 0.45), transparent 60%),
+      radial-gradient(ellipse 120% 90% at 50% 50%, transparent 40%, rgb(20 0 0 / 0.65) 100%);
+  }
+
+  .grain::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    z-index: -1;
+    pointer-events: none;
+    opacity: 0.22;
+    mix-blend-mode: overlay;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='220' height='220'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  }
+
+  /* Parede de galeria off-white */
+  .bg-wall {
+    position: relative;
+    isolation: isolate;
+    background-color: var(--color-stone);
+    background-image:
+      radial-gradient(ellipse 70% 55% at 50% 0%, rgb(255 250 244 / 0.7), transparent 70%),
+      radial-gradient(ellipse 120% 90% at 50% 60%, transparent 55%, rgb(116 9 9 / 0.08) 100%);
+  }
+
+  /* Texto com textura de folha de ouro */
+  .gold-text {
+    background-image:
+      linear-gradient(115deg, rgb(255 240 200 / 0.15), transparent 40%),
+      url('../assets/brand/gold.webp');
+    background-size: cover;
+    background-position: center;
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+  }
+
+  .gold-fill {
+    background-image: url('../assets/brand/gold.webp');
+    background-size: cover;
+    background-position: center;
+  }
+
+  /* Logo M27 dourada: textura de ouro recortada pela logo branca */
+  .logo-gold {
+    background-image: url('../assets/brand/gold.webp');
+    background-size: cover;
+    background-position: center;
+    -webkit-mask: url('../assets/brand/logo-white.webp') center / contain no-repeat;
+    mask: url('../assets/brand/logo-white.webp') center / contain no-repeat;
+  }
+
+  .logo-ivory {
+    background-color: var(--color-ivory);
+    -webkit-mask: url('../assets/brand/logo-white.webp') center / contain no-repeat;
+    mask: url('../assets/brand/logo-white.webp') center / contain no-repeat;
+  }
+
+  .logo-crimson {
+    background-color: var(--color-crimson);
+    -webkit-mask: url('../assets/brand/logo-white.webp') center / contain no-repeat;
+    mask: url('../assets/brand/logo-white.webp') center / contain no-repeat;
+  }
+
+  /* Moldura dourada fina (quadros, retratos) */
+  .frame-gold {
+    padding: 10px;
+    background-image:
+      linear-gradient(135deg, rgb(255 236 190 / 0.35), transparent 45%, rgb(60 30 0 / 0.35)),
+      url('../assets/brand/gold.webp');
+    background-size: cover;
+    box-shadow:
+      inset 0 0 0 1px rgb(255 235 190 / 0.5),
+      inset 0 0 0 4px rgb(90 50 10 / 0.35),
+      0 30px 60px -20px rgb(20 0 0 / 0.55),
+      0 12px 24px -12px rgb(20 0 0 / 0.5);
+  }
+  .frame-gold > * {
+    box-shadow: 0 0 0 1px rgb(80 40 5 / 0.6), inset 0 0 18px rgb(0 0 0 / 0.35);
+  }
+
+  /* Rótulo em caixa alta, como no topo dos posts ("COMISSÃO ——— MAUÁ 27") */
+  .eyebrow {
+    font-family: var(--font-display);
+    font-size: 0.78rem;
+    font-weight: 500;
+    letter-spacing: 0.32em;
+    text-transform: uppercase;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+/* Cortina de veludo (abertura do hero) */
+.curtain {
+  background-color: #4a0605;
+  background-image:
+    linear-gradient(180deg, rgb(0 0 0 / 0.45), transparent 18%, transparent 80%, rgb(0 0 0 / 0.55)),
+    repeating-linear-gradient(
+      90deg,
+      #320302 0%,
+      #5e0a07 2.2%,
+      #8c1a12 4%,
+      #6a0c08 5.6%,
+      #320302 8%
+    );
+}
+
+/* Reflexo que atravessa a logo dourada */
+.logo-shine {
+  -webkit-mask: url('../assets/brand/logo-white.webp') center / contain no-repeat;
+  mask: url('../assets/brand/logo-white.webp') center / contain no-repeat;
+  background-image: linear-gradient(105deg, transparent 38%, rgb(255 246 222 / 0.75) 50%, transparent 62%);
+  background-size: 300% 100%;
+  background-position: 120% 0;
+  mix-blend-mode: soft-light;
+  animation: shine 2.8s var(--ease-gallery) 1.9s both;
+}
+
+@keyframes shine {
+  from { background-position: 120% 0; }
+  to { background-position: -40% 0; }
+}
+
+@keyframes scroll-cue {
+  0% { transform: scaleY(0); transform-origin: top; }
+  45% { transform: scaleY(1); transform-origin: top; }
+  55% { transform: scaleY(1); transform-origin: bottom; }
+  100% { transform: scaleY(0); transform-origin: bottom; }
+}
+.scroll-cue {
+  animation: scroll-cue 2.4s var(--ease-gallery) infinite;
+}
