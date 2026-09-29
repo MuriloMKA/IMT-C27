@@ -13,12 +13,13 @@ import sorteio from '../../assets/posts/sorteio.webp';
 import valor1Lote from '../../assets/posts/valor-1-lote.webp';
 import kitAderidos from '../../assets/posts/kit-aderidos.webp';
 import formsSocial from '../../assets/posts/forms-social.webp';
+import { formatDate } from '../lib/dates';
 
 export const site = {
   title: 'Mauá 2027',
   subtitle: 'The Exhibition',
   institution: 'Instituto Mauá de Tecnologia',
-  instagram: 'https://www.instagram.com/', // TODO: @ oficial da comissão
+  instagram: 'https://www.instagram.com/mauac27?stkn=Njg5bmU2dTNiZzR2',
   contactEmail: '', // TODO: e-mail da comissão (deixe vazio para esconder)
 };
 
@@ -41,7 +42,9 @@ export const manifesto = {
 };
 
 /*
- * Data em formato ISO (AAAA-MM-DD). Deixe `null` enquanto não houver data confirmada.
+ * Data do baile no formato 'AAAA-MM-DD' (ex.: '2027-12-11').
+ * Enquanto for `null`, o site mostra "A definir" e não exibe contagem regressiva.
+ * Quando preencher, aparecem sozinhos a data e o "Faltam X dias para o baile".
  */
 export const event = {
   name: 'Mauá 2027: The Exhibition',
@@ -54,15 +57,9 @@ export const event = {
   company: 'Empresa parceira', // TODO: nome da empresa de formatura
 };
 
-/* Próximo marco com contagem regressiva (some sozinho depois que a data passa) */
-export const nextMilestone = {
-  label: 'Lançamento na Mauá',
-  date: '2026-10-15',
-};
-
 export const exhibitFacts = [
   { label: 'Obra', value: event.name },
-  { label: 'Data', value: event.dateLabel },
+  { label: 'Data', value: event.date ? formatDate(event.date) : event.dateLabel },
   { label: 'Local', value: event.venue },
   { label: 'Traje', value: event.dressCode },
   { label: 'Acervo', value: 'Turma de 2027 · Instituto Mauá de Tecnologia' },
@@ -103,27 +100,28 @@ export const posts: Post[] = [
 export type Member = { photo: string; name: string; role: string };
 
 export const members: Member[] = [
-  { photo: '01', name: 'Laura Haenel', role: 'Diretora de eventos' },
-  { photo: '02', name: 'Sofia Aranda', role: 'Função' },
-  { photo: '03', name: 'Felipe Vidal', role: 'Função' },
-  { photo: '04', name: '⁠Maria Vitória Martins', role: 'Presidente' },
-  { photo: '05', name: '⁠Isabella Kuntz', role: 'Função' },
-  { photo: '06', name: 'Murillo Cunha', role: 'Função' },
-  { photo: '07', name: 'Enzo Pistori', role: 'Função' },
-  { photo: '08', name: 'João Pedro Marques', role: 'Vice-presidente' },
-  { photo: '09', name: 'Murilo Kaspar', role: 'Eventos' },
-  { photo: '10', name: 'Victoria Oliveira', role: 'Função' },
-  { photo: '11', name: 'Enzo Sampaio', role: 'Função' },
-  { photo: '12', name: 'Joaquim Westmann', role: 'Função' },
-  { photo: '13', name: '⁠Ana Luiza Perez', role: 'Função' },
-  { photo: '14', name: 'Pietra Izabel', role: 'Função' },
-  { photo: '15', name: 'Aline Miyuki', role: 'Função' },
-  { photo: '16', name: 'Giovanna Pocetti', role: 'Função' },
-  { photo: '17', name: 'Amanda C', role: 'Função' },
-  { photo: '18', name: 'Laura Amaro', role: 'Função' },
-  { photo: '19', name: 'Thales', role: 'Função' },
-  { photo: '20', name: 'Bruno Sabadin', role: 'Função' },
-  { photo: '21', name: 'Nome Sobrenome', role: 'Função' },
+  { photo: '01', name: 'Laura Haenel', role: 'Diretora de Eventos' }, //ok
+  { photo: '02', name: 'Sofia Aranda', role: 'Diretora Comunica' },
+  { photo: '03', name: 'Felipe Vidal', role: 'Diretor Financeiro' },
+  { photo: '04', name: 'Maria Vitória Jatobá', role: 'Presidente' },
+  { photo: '05', name: 'Isabella Signorini', role: 'Eventos' },
+  { photo: '06', name: 'Murillo Cunha', role: 'Eventos' },
+  { photo: '07', name: 'Geraldo', role: 'Diretor Financeiro' },
+  { photo: '08', name: 'João Pedro Marques', role: 'Vice-Presidente' }, //ok
+  { photo: '09', name: 'Murilo Kaspar', role: 'Eventos' }, //ok
+  { photo: '10', name: 'Victoria Ramos', role: 'Comunica' },
+  { photo: '11', name: 'Enzo Sampaio', role: 'Financeiro' },
+  { photo: '12', name: 'Joaquim Anderlini', role: 'Financeiro' },
+  { photo: '13', name: 'Ana Luiza Perez', role: 'Diretora Comunica' },
+  { photo: '14', name: 'Pietra Izabel', role: 'Vice-Presidente Criativo' },
+  { photo: '15', name: 'Aline Arakaki', role: 'RH' },
+  { photo: '16', name: 'Giovanna Pocetti', role: 'eventos' },
+  { photo: '17', name: 'Amanda Andrade', role: 'Eventos' },
+  { photo: '18', name: 'Laura DAmaro', role: 'Diretora do RH' },
+  { photo: '19', name: 'Thales Nascimento', role: 'RH' },
+  { photo: '20', name: 'Bruno Sabadin', role: 'Eventos' },
+  { photo: '21', name: 'Júlia Valente', role: 'Comunica' },
+
 ];
 
 export const faqs = [

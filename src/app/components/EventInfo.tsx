@@ -1,24 +1,12 @@
 import { motion, useScroll, useTransform } from 'motion/react';
 import { useRef } from 'react';
-import { event, exhibitFacts, nextMilestone } from '../data/content';
+import { event, exhibitFacts } from '../data/content';
+import { daysUntil, formatDate } from '../lib/dates';
 import { Reveal } from './brand/Reveal';
 import { SectionHeading } from './brand/SectionHeading';
 
-function daysUntil(isoDate: string) {
-  const [y, m, d] = isoDate.split('-').map(Number);
-  const target = new Date(y, m - 1, d);
-  const today = new Date();
-  today.setHours(0, 0, 0, 0);
-  return Math.round((target.getTime() - today.getTime()) / 86_400_000);
-}
-
-function formatDate(isoDate: string) {
-  const [y, m, d] = isoDate.split('-').map(Number);
-  return new Date(y, m - 1, d).toLocaleDateString('pt-BR', { day: '2-digit', month: 'long', year: 'numeric' });
-}
-
-function Countdown() {
-  const days = daysUntil(nextMilestone.date);
+function Countdown({ date }: { date: string }) {
+  const days = daysUntil(date);
   if (days < 0) return null;
 
   return (
@@ -27,13 +15,13 @@ function Countdown() {
         <span className="eyebrow block text-ivory/60">{days === 0 ? 'É hoje' : days === 1 ? 'Falta' : 'Faltam'}</span>
         <span className="mt-2 flex items-baseline gap-2">
           <span className="font-display text-7xl font-light text-ivory">{days === 0 ? '✦' : days}</span>
-          {days > 0 && <span className="font-script text-5xl gold-text">{days === 1 ? 'dia' : 'dias'}</span>}
+          {days > 0 && <span className="gold-text font-script text-5xl">{days === 1 ? 'dia' : 'dias'}</span>}
         </span>
       </div>
       <p className="pb-2 text-lg leading-snug text-ivory/75">
-        {nextMilestone.label}
+        {days === 0 ? 'A noite do baile chegou' : 'para o baile'}
         <br />
-        <span className="text-ivory/50">{formatDate(nextMilestone.date)}</span>
+        <span className="text-ivory/50">{formatDate(date)}</span>
       </p>
     </Reveal>
   );
@@ -88,7 +76,7 @@ export function EventInfo() {
                 ))}
               </dl>
             </Reveal>
-            <Countdown />
+            {event.date && <Countdown date={event.date} />}
           </div>
         </div>
       </div>

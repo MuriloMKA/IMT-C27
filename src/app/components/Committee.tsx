@@ -12,7 +12,8 @@ const photos = Object.fromEntries(
 );
 
 function initials(name: string) {
-  const parts = name.trim().split(/\s+/);
+  // remove caracteres invisíveis que vêm junto ao copiar do WhatsApp
+  const parts = name.replace(/[\u200B-\u200F\u2060\uFEFF]/g, '').trim().split(/\s+/);
   return (parts[0][0] + (parts.length > 1 ? parts[parts.length - 1][0] : '')).toUpperCase();
 }
 
