@@ -75,12 +75,13 @@ export const tableMap = {
   caption: 'Planta do salão com a distribuição das mesas',
 };
 
-export type Post = { src: string; title: string; caption: string };
+// `date` é opcional (ex.: '15.10.2026'); sem data, a placa mostra só o ornamento
+export type Post = { src: string; title: string; caption: string; date?: string };
 
 export const posts: Post[] = [
-  { src: saveTheDate, title: 'Save the Date', caption: 'Lançamento na Mauá' },
+  { src: saveTheDate, title: 'Save the Date', caption: 'Lançamento na Mauá', date: '15.10.2026' },
   { src: falta1Dia, title: 'Falta 1 Dia', caption: 'Contagem regressiva' },
-  { src: eHoje, title: 'É Hoje', caption: 'Lançamento' },
+  { src: eHoje, title: 'É Hoje', caption: 'Lançamento', date: '15.10.2026' },
   { src: playNoConceito, title: 'Play no Conceito', caption: 'Mauá 2027: The Exhibition' },
   { src: conhecaComissao, title: 'Conheça a Comissão', caption: 'Comissão Mauá 27' },
   { src: preCadastro, title: 'Pré-cadastro Aberto', caption: 'Passo a passo' },

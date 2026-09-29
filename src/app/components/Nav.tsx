@@ -3,6 +3,7 @@ import { Menu, X } from 'lucide-react';
 import { useEffect, useState } from 'react';
 import { navLinks } from '../data/content';
 import { lockScroll, scrollToId } from '../lib/smooth-scroll';
+import { Ornament } from './brand/Ornament';
 import { easeGallery } from './brand/Reveal';
 
 export function Nav() {
@@ -90,21 +91,44 @@ export function Nav() {
             exit={{ clipPath: 'inset(0 0 100% 0)' }}
             transition={{ duration: 0.7, ease: easeGallery }}
           >
-            <ul className="flex flex-col items-center gap-3">
+            <motion.div
+              className="w-60 origin-center"
+              initial={{ scaleX: 0 }}
+              animate={{ scaleX: 1 }}
+              exit={{ opacity: 0 }}
+              transition={{ duration: 1, delay: 0.2, ease: easeGallery }}
+            >
+              <Ornament />
+            </motion.div>
+
+            <ul className="my-10 flex flex-col items-center gap-6">
               {navLinks.map((link, i) => (
                 <motion.li
                   key={link.id}
-                  initial={{ opacity: 0, y: 24 }}
+                  initial={{ opacity: 0, y: 20 }}
                   animate={{ opacity: 1, y: 0 }}
                   exit={{ opacity: 0, y: -12, transition: { duration: 0.2 } }}
-                  transition={{ duration: 0.7, delay: 0.25 + i * 0.06, ease: easeGallery }}
+                  transition={{ duration: 0.7, delay: 0.3 + i * 0.06, ease: easeGallery }}
                 >
-                  <button onClick={() => go(link.id)} className="font-script text-5xl text-ivory">
+                  <button
+                    onClick={() => go(link.id)}
+                    className="font-display text-2xl font-light tracking-[0.3em] text-ivory uppercase transition-colors duration-300 active:text-gold"
+                  >
                     {link.label}
                   </button>
                 </motion.li>
               ))}
             </ul>
+
+            <motion.div
+              className="w-60 origin-center"
+              initial={{ scaleX: 0 }}
+              animate={{ scaleX: 1 }}
+              exit={{ opacity: 0 }}
+              transition={{ duration: 1, delay: 0.2, ease: easeGallery }}
+            >
+              <Ornament />
+            </motion.div>
           </motion.div>
         )}
       </AnimatePresence>
