@@ -41,6 +41,8 @@ export function Footer() {
           <span>Comissão de Formatura · Turma 2027</span>
           <span>{site.institution}</span>
         </div>
+
+        <p className="eyebrow mt-8 text-[0.6rem] text-ivory/30">Desenvolvido por Murilo Kaspar</p>
       </div>
     </footer>
   );
