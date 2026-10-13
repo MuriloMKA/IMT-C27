@@ -118,13 +118,13 @@ export const members: Member[] = [
   { photo: '04', name: 'Maria Vitória Jatobá', role: 'Presidente' },//ok
   { photo: '05', name: 'Isabella Signorini', role: 'Eventos' }, //ok
   { photo: '06', name: 'Murillo Cunha', role: 'Eventos' }, //ok
-  { photo: '07', name: 'Geraldo', role: 'Diretor Financeiro' },
+  { photo: '07', name: 'Geraldo', role: 'Diretor Financeiro' }, 
   { photo: '08', name: 'João Pedro Marques', role: 'Vice-Presidente' }, //ok
   { photo: '09', name: 'Murilo Kaspar', role: 'Eventos' }, //ok
-  { photo: '10', name: 'Victoria Ramos', role: 'Comunica' },
-  { photo: '11', name: 'Enzo Sampaio', role: 'Financeiro' },
-  { photo: '12', name: 'Joaquim Anderlini', role: 'Financeiro' },
-  { photo: '13', name: 'Ana Luiza Perez', role: 'Diretora Comunica' },
+  { photo: '10', name: 'Victoria Ramos', role: 'Comunica' }, 
+  { photo: '11', name: 'Enzo Sampaio', role: 'Financeiro' }, //ok
+  { photo: '12', name: 'Joaquim Anderlini', role: 'Financeiro' }, //ok
+  { photo: '13', name: 'Ana Luiza Perez', role: 'Diretora Comunica' }, //ok
   { photo: '14', name: 'Pietra Izabel', role: 'Vice-Presidente Criativo' },
   { photo: '15', name: 'Aline Arakaki', role: 'RH' },//ok
   { photo: '16', name: 'Giovanna Pocetti', role: 'eventos' }, //ok
