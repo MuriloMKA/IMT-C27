@@ -87,6 +87,19 @@ html.lenis body {
     background-position: center;
   }
 
+  /* Botão principal: dourado liso (a textura de ouro atrapalha a leitura do texto) */
+  .btn-gold {
+    background-image: linear-gradient(135deg, #f6e3ac 0%, #d9b46a 45%, #b8893f 100%);
+    color: var(--color-wine-deep);
+    box-shadow:
+      inset 0 1px 0 rgb(255 255 255 / 0.5),
+      0 10px 30px rgb(20 0 0 / 0.5);
+    transition: filter 0.5s;
+  }
+  .btn-gold:hover {
+    filter: brightness(1.08);
+  }
+
   /* Logo M27 dourada: textura de ouro recortada pela logo branca */
   .logo-gold {
     background-image: url('../assets/brand/gold.webp');

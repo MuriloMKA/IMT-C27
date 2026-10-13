@@ -19,6 +19,7 @@ export const site = {
   institution: 'Instituto Mauá de Tecnologia',
   instagram: 'https://www.instagram.com/mauac27?stkn=Njg5bmU2dTNiZzR2',
   contactEmail: '', // TODO: e-mail da comissão (deixe vazio para esconder)
+  adhesionUrl: 'https://sistema.kazformaturas.com.br/customers/new?turma=31343', // cadastro de adesão na Kaz
 };
 
 /*
@@ -118,7 +119,7 @@ export const members: Member[] = [
   { photo: '04', name: 'Maria Vitória Jatobá', role: 'Presidente' },//ok
   { photo: '05', name: 'Isabella Signorini', role: 'Eventos' }, //ok
   { photo: '06', name: 'Murillo Cunha', role: 'Eventos' }, //ok
-  { photo: '07', name: 'Geraldo', role: 'Diretor Financeiro' }, 
+  { photo: '07', name: 'Geraldo', role: 'Diretor Financeiro' }, //ok
   { photo: '08', name: 'João Pedro Marques', role: 'Vice-Presidente' }, //ok
   { photo: '09', name: 'Murilo Kaspar', role: 'Eventos' }, //ok
   { photo: '10', name: 'Victoria Ramos', role: 'Comunica' }, 
@@ -136,7 +137,10 @@ export const members: Member[] = [
 
 ];
 
-export const faqs = [
+// `link` é opcional: aparece como botão embaixo da resposta
+export type Faq = { question: string; answer: string; link?: { label: string; href: string } };
+
+export const faqs: Faq[] = [
   {
     question: 'Quando será a formatura?',
     answer:
@@ -145,7 +149,8 @@ export const faqs = [
   {
     question: 'Como faço minha adesão?',
     answer:
-      'O primeiro passo é o pré-cadastro. Depois dele, você recebe as instruções de contrato e pagamento diretamente da comissão e da empresa parceira.',
+      'Pelo sistema da Kaz, nossa agência de formatura: é só preencher o cadastro da turma Mauá 27 no link abaixo. Depois dele, você recebe as instruções de contrato e pagamento.',
+    link: { label: 'Fazer minha adesão', href: site.adhesionUrl },
   },
   {
     question: 'O que é o 1º lote e até quando vale?',

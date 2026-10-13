@@ -1,10 +1,10 @@
 import { AnimatePresence, motion } from 'motion/react';
 import { useId, useState } from 'react';
-import { faqs, site } from '../data/content';
+import { faqs, site, type Faq } from '../data/content';
 import { easeGallery, Reveal } from './brand/Reveal';
 import { SectionHeading } from './brand/SectionHeading';
 
-function FAQItem({ question, answer, index }: { question: string; answer: string; index: number }) {
+function FAQItem({ question, answer, link, index }: Faq & { index: number }) {
   const [open, setOpen] = useState(false);
   const id = useId();
 
@@ -40,7 +40,19 @@ function FAQItem({ question, answer, index }: { question: string; answer: string
             transition={{ duration: 0.6, ease: easeGallery }}
             className="overflow-hidden"
           >
-            <p className="max-w-3xl pb-8 pl-13 text-xl leading-relaxed text-ivory/75 md:pl-16">{answer}</p>
+            <div className="max-w-3xl pb-8 pl-13 md:pl-16">
+              <p className="text-xl leading-relaxed text-ivory/75">{answer}</p>
+              {link && (
+                <a
+                  href={link.href}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="eyebrow mt-6 inline-flex items-center gap-3 border border-gold/60 px-6 py-3.5 text-ivory transition-colors duration-500 hover:bg-ivory hover:text-wine"
+                >
+                  {link.label}
+                </a>
+              )}
+            </div>
           </motion.div>
         )}
       </AnimatePresence>
@@ -56,20 +68,30 @@ export function FAQ() {
 
         <Reveal className="mt-16 border-t border-gold/25 md:mt-24">
           {faqs.map((faq, i) => (
-            <FAQItem key={faq.question} question={faq.question} answer={faq.answer} index={i} />
+            <FAQItem key={faq.question} {...faq} index={i} />
           ))}
         </Reveal>
 
         <Reveal className="mt-14 text-center">
           <p className="text-xl text-ivory/70">Ainda ficou com alguma dúvida?</p>
-          <a
-            href={site.instagram}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="eyebrow mt-6 inline-flex items-center gap-3 border border-gold/60 px-7 py-4 text-ivory transition-colors duration-500 hover:bg-ivory hover:text-wine"
-          >
-            Fale com a comissão
-          </a>
+          <div className="mt-6 flex flex-col items-center justify-center gap-4 sm:flex-row">
+            <a
+              href={site.adhesionUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="btn-gold eyebrow inline-flex font-semibold items-center gap-3 px-7 py-4"
+            >
+              Fazer minha adesão
+            </a>
+            <a
+              href={site.instagram}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="eyebrow inline-flex items-center gap-3 border border-gold/60 px-7 py-4 text-ivory transition-colors duration-500 hover:bg-ivory hover:text-wine"
+            >
+              Fale com a comissão
+            </a>
+          </div>
         </Reveal>
       </div>
     </section>

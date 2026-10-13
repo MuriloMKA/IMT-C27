@@ -19,7 +19,7 @@ export function Hero() {
 
   return (
     <section id="top" ref={ref} className="relative h-[190svh]">
-      <div className="bg-velvet grain sticky top-0 flex h-svh flex-col items-center justify-center overflow-hidden">
+      <div className="bg-velvet grain sticky top-0 flex h-svh flex-col items-center justify-center overflow-hidden pt-16 md:pt-20">
         {/* Spot de luz de galeria acendendo */}
         <motion.div
           aria-hidden
@@ -49,7 +49,7 @@ export function Hero() {
           style={{ scale: logoScale, y: logoY, opacity: logoOpacity }}
         >
           <motion.div
-            className="relative size-[min(62vw,40svh)] drop-shadow-[0_18px_30px_rgb(20_0_0/0.55)]"
+            className="relative size-[min(62vw,34svh)] drop-shadow-[0_18px_30px_rgb(20_0_0/0.55)]"
             initial={{ opacity: 0, scale: 0.9, filter: 'blur(14px)' }}
             animate={{ opacity: 1, scale: 1, filter: 'blur(0px)' }}
             transition={{ duration: 2, delay: 0.7, ease: easeGallery }}
@@ -80,11 +80,21 @@ export function Hero() {
         <motion.div className="relative mt-8 md:mt-10" style={{ opacity: textOpacity, y: textY }}>
           <motion.div initial={{ opacity: 0, y: 12 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 1.2, delay: 2.1, ease: easeGallery }}>
             <LaunchCountdown />
+            <div className="mt-6 flex justify-center">
+              <a
+                href={site.adhesionUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="btn-gold eyebrow inline-flex font-semibold items-center px-7 py-3.5"
+              >
+                Fazer minha adesão
+              </a>
+            </div>
           </motion.div>
         </motion.div>
 
         {/* Indicador de scroll */}
-        <motion.div className="absolute bottom-8 [@media(max-height:760px)]:hidden" style={{ opacity: textOpacity }}>
+        <motion.div className="relative mt-10 md:mt-12 [@media(max-height:900px)]:hidden" style={{ opacity: textOpacity }}>
           <motion.div
             className="flex flex-col items-center gap-3 text-ivory/60"
             initial={{ opacity: 0 }}
