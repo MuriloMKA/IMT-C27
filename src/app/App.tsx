@@ -1,5 +1,6 @@
 import { MotionConfig } from 'motion/react';
 import { useEffect } from 'react';
+import { showVenueMap } from './data/content';
 import { Committee } from './components/Committee';
 import { EventInfo } from './components/EventInfo';
 import { FAQ } from './components/FAQ';
@@ -21,7 +22,7 @@ export default function App() {
         <Hero />
         <Manifesto />
         <EventInfo />
-        <VenueMap />
+        {showVenueMap && <VenueMap />}
         <Gallery />
         <Committee />
         <FAQ />

@@ -2,6 +2,7 @@ import { motion, useReducedMotion, useScroll, useTransform } from 'motion/react'
 import { useRef } from 'react';
 import { site } from '../data/content';
 import { easeGallery } from './brand/Reveal';
+import { LaunchCountdown } from './LaunchCountdown';
 
 export function Hero() {
   const ref = useRef<HTMLElement>(null);
@@ -48,7 +49,7 @@ export function Hero() {
           style={{ scale: logoScale, y: logoY, opacity: logoOpacity }}
         >
           <motion.div
-            className="relative size-[min(62vw,46svh)] drop-shadow-[0_18px_30px_rgb(20_0_0/0.55)]"
+            className="relative size-[min(62vw,40svh)] drop-shadow-[0_18px_30px_rgb(20_0_0/0.55)]"
             initial={{ opacity: 0, scale: 0.9, filter: 'blur(14px)' }}
             animate={{ opacity: 1, scale: 1, filter: 'blur(0px)' }}
             transition={{ duration: 2, delay: 0.7, ease: easeGallery }}
@@ -76,8 +77,14 @@ export function Hero() {
           </motion.span>
         </motion.h1>
 
+        <motion.div className="relative mt-8 md:mt-10" style={{ opacity: textOpacity, y: textY }}>
+          <motion.div initial={{ opacity: 0, y: 12 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 1.2, delay: 2.1, ease: easeGallery }}>
+            <LaunchCountdown />
+          </motion.div>
+        </motion.div>
+
         {/* Indicador de scroll */}
-        <motion.div className="absolute bottom-8" style={{ opacity: textOpacity }}>
+        <motion.div className="absolute bottom-8 [@media(max-height:760px)]:hidden" style={{ opacity: textOpacity }}>
           <motion.div
             className="flex flex-col items-center gap-3 text-ivory/60"
             initial={{ opacity: 0 }}

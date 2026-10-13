@@ -3,16 +3,14 @@
  * Para atualizar informações, edite só este arquivo — os componentes se ajustam sozinhos.
  */
 
-import saveTheDate from '../../assets/posts/save-the-date.webp';
-import falta1Dia from '../../assets/posts/falta-1-dia.webp';
-import eHoje from '../../assets/posts/e-hoje.webp';
-import playNoConceito from '../../assets/posts/play-no-conceito.webp';
-import conhecaComissao from '../../assets/posts/conheca-a-comissao.webp';
-import preCadastro from '../../assets/posts/pre-cadastro.webp';
-import sorteio from '../../assets/posts/sorteio.webp';
-import valor1Lote from '../../assets/posts/valor-1-lote.webp';
-import kitAderidos from '../../assets/posts/kit-aderidos.webp';
-import formsSocial from '../../assets/posts/forms-social.webp';
+import post01 from '../../assets/posts/01.webp';
+import post02 from '../../assets/posts/02.webp';
+import post03 from '../../assets/posts/03.webp';
+import post04 from '../../assets/posts/04.webp';
+import post05 from '../../assets/posts/05.webp';
+import post06 from '../../assets/posts/06.webp';
+import post07 from '../../assets/posts/07.webp';
+import post08 from '../../assets/posts/08.webp';
 import { formatDate } from '../lib/dates';
 
 export const site = {
@@ -23,6 +21,20 @@ export const site = {
   contactEmail: '', // TODO: e-mail da comissão (deixe vazio para esconder)
 };
 
+/*
+ * Lançamento oficial: abertura das vendas.
+ * A contagem regressiva no topo do site usa esta data/hora (horário de Brasília)
+ * e some sozinha quando ela passa.
+ */
+export const launch = {
+  date: '2026-10-18T18:00:00-03:00',
+  label: 'Lançamento oficial',
+  note: 'Abertura das vendas · 18.10 às 18h',
+};
+
+// Mude para `true` quando o mapa das mesas puder aparecer (seção e link no menu)
+export const showVenueMap = false;
+
 export const navLinks = [
   { id: 'sobre', label: 'A Comissão' },
   { id: 'evento', label: 'O Evento' },
@@ -30,7 +42,7 @@ export const navLinks = [
   { id: 'acervo', label: 'Acervo' },
   { id: 'membros', label: 'Membros' },
   { id: 'faq', label: 'Dúvidas' },
-];
+].filter((link) => showVenueMap || link.id !== 'planta');
 
 export const manifesto = {
   statement:
@@ -78,17 +90,16 @@ export const tableMap = {
 // `date` é opcional (ex.: '15.10.2026'); sem data, a placa mostra só o ornamento
 export type Post = { src: string; title: string; caption: string; date?: string };
 
+// Do post mais recente para o mais antigo: o primeiro da lista é o primeiro que aparece no site
 export const posts: Post[] = [
-  { src: saveTheDate, title: 'Save the Date', caption: 'Lançamento na Mauá', date: '15.10.2026' },
-  { src: falta1Dia, title: 'Falta 1 Dia', caption: 'Contagem regressiva' },
-  { src: eHoje, title: 'É Hoje', caption: 'Lançamento', date: '15.10.2026' },
-  { src: playNoConceito, title: 'Play no Conceito', caption: 'Mauá 2027: The Exhibition' },
-  { src: conhecaComissao, title: 'Conheça a Comissão', caption: 'Comissão Mauá 27' },
-  { src: preCadastro, title: 'Pré-cadastro Aberto', caption: 'Passo a passo' },
-  { src: sorteio, title: 'Sorteio', caption: 'Pré-cadastro' },
-  { src: valor1Lote, title: 'Valor', caption: '1º Lote' },
-  { src: kitAderidos, title: 'Kit 1ºs Aderidos', caption: 'Brindes' },
-  { src: formsSocial, title: 'Forms Social', caption: 'Comissão Mauá 27' },
+  { src: post08, title: 'Sorteio das 27 Horas', caption: 'Para quem aderir nas primeiras 27 horas' },
+  { src: post07, title: 'Kit dos Aderidos', caption: 'Brindes dos primeiros aderidos!' },
+  { src: post06, title: '1º Lote', caption: 'Valor da adesão' },
+  { src: post05, title: 'Pré-cadastro Aberto', caption: 'Passo a passo' },
+  { src: post04, title: 'Forms Social', caption: 'Nosso Forms social' },
+  { src: post03, title: 'Save the Date', caption: 'Lançamento na Mauá', date: '15.10.2026' },
+  { src: post02, title: 'O Brasão', caption: 'A identidade da Mauá 27' },
+  { src: post01, title: 'Agência Escolhida', caption: 'Mauá C27 + Kaz' },
 ];
 
 /*
